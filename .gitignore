@@ -1,0 +1,12 @@
+# 构建产物与本地文件
+out/
+node_modules/
+*.tgz
+*.log
+*.sqlite
+
+# 本地/系统
+.DS_Store
+Thumbs.db
+.env
+*.local
