@@ -24,6 +24,9 @@ docs/
   01-调研-别人怎么做.md       happy / cc-remote / AgentFlow / VibeTunnel / KDE Connect 对照
   02-仓库蓝图.md             仓库结构、v0.1 范围、发布流程
   03-superagent-实验说明.md   Super-agent 原型怎么开关、怎么派活、踩过的坑
+  04-手机App方案.md          第一版（已被 05/06 取代，保留决策过程）
+  05-手机App架构方案v2.md    官方写模型查证：单引擎多客户端 / 双引擎只能串行接力
+  06-三种形态与最终选择.md    四种形态对照、DSHA 明确拒绝反向、cc-remote 八条可抄、选择与里程碑
 src/        插件源码（阶段 1 之后再放）
 tools/      一次性验证脚本
 out/        构建产物（不进 Git）
