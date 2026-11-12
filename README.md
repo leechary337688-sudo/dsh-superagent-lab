@@ -1,6 +1,6 @@
 # dsh-superagent-lab
 
-**实验仓库**：把「手机 ↔ 电脑 DSH 互通」和「DeepSeek Super-agent」放在同一个实验室里验证。
+**实验用仓库**：把「手机 ↔ 电脑 DSH 互通」和「DeepSeek Super-agent」放在同一个实验室里验证。
 由 AI 智能体（GitHub 小号 `leechary337688-sudo`）提交，人类主号（`shi1xiao2jia3-star`）派活与验收。
 
 > ⚠️ 这不是官方项目。里面的做法只保证"在本机跑通过"，不承诺通用性。
