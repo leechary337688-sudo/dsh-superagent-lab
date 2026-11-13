@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "round": {
+    "total": 14,
+    "prepSeconds": 40
+  },
+  "economy": {
+    "startingGold": 10,
+    "baseIncome": 5,
+    "interestPerTen": 1,
+    "maxInterestPerRound": 5,
+    "winBonus": 1,
+    "lossBonus": 1,
+    "sellRefundRatio": 1
+  },
+  "leveling": {
+    "maxLevel": 9,
+    "upgradeCosts": [2, 4, 6, 10, 16, 24, 34, 48]
+  },
+  "shop": {
+    "slots": 5,
+    "refreshCost": 2,
+    "oddsByLevel": [
+      [100, 0, 0, 0, 0, 0],
+      [100, 0, 0, 0, 0, 0],
+      [75, 25, 0, 0, 0, 0],
+      [55, 30, 15, 0, 0, 0],
+      [45, 33, 20, 2, 0, 0],
+      [30, 40, 25, 5, 0, 0],
+      [19, 35, 35, 10, 1, 0],
+      [15, 25, 35, 20, 4, 1],
+      [10, 15, 30, 30, 12, 3]
+    ]
+  },
+  "bench": {
+    "slots": 9
+  },
+  "board": {
+    "slotsByLevel": [3, 4, 5, 6, 7, 8, 9, 10, 10]
+  },
+  "run": {
+    "startingHp": 100
+  }
+}

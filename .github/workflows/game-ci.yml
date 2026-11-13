@@ -1,0 +1,38 @@
+name: arknights-autochess
+
+# 只在游戏子目录变化时跑，避免影响仓库里其他实验。
+# push 只在 main 上跑；PR 由 pull_request 事件触发，避免同一次推送跑两遍。
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'arknights-autochess/**'
+      - '.github/workflows/game-ci.yml'
+  pull_request:
+    paths:
+      - 'arknights-autochess/**'
+      - '.github/workflows/game-ci.yml'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: arknights-autochess
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: arknights-autochess/package-lock.json
+      - name: Install
+        run: npm ci
+      - name: Architecture & determinism guard
+        run: npm run check:layers
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Unit tests & content validation
+        run: npm test
+      - name: Production build
+        run: npm run build

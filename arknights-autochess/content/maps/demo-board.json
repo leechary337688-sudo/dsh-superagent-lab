@@ -1,0 +1,23 @@
+{
+  "id": "demo-board",
+  "name": "占位战场 · 12×7",
+  "cols": 12,
+  "rows": 7,
+  "legend": {
+    "#": { "kind": "wall" },
+    ".": { "kind": "ground" },
+    "d": { "kind": "ground", "flags": ["deployable"] },
+    "^": { "kind": "highGround" },
+    "S": { "kind": "ground", "flags": ["spawn"] },
+    "G": { "kind": "ground", "flags": ["goal"] }
+  },
+  "layout": [
+    "#S........S#",
+    "#..........#",
+    "#..#....#..#",
+    "#dddddddddd#",
+    "#dddddddddd#",
+    "#dddddddddd#",
+    "#....G.....#"
+  ]
+}
