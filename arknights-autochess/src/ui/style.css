@@ -1,0 +1,420 @@
+/* ============================================================
+   框架预览的界面样式：深色 + 琥珀色点缀，尽量贴近方舟的界面气质。
+   这一版只管「骨架能看」：布局、面板、状态数字；美术资源接入后，
+   背景/图标/立绘都会换成 asset registry 里的图。
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+  --bg: #0a0e14;
+  --panel: #0f151d;
+  --panel-2: #131b25;
+  --line: #263241;
+  --line-soft: #1b2531;
+  --text: #dbe4ee;
+  --muted: #7c8da1;
+  --gold: #f0b429;
+  --gold-soft: #c9951f;
+  --danger: #ff6b6b;
+  --ok: #6bd39a;
+  --mono: 'Consolas', 'SFMono-Regular', 'Microsoft YaHei', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', 'Microsoft YaHei', system-ui, sans-serif;
+  font-size: 14px;
+}
+
+#ui-root {
+  height: 100%;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.92em;
+  color: var(--gold-soft);
+}
+
+.app {
+  display: grid;
+  grid-template-rows: 72px minmax(0, 1fr) 118px 28px;
+  gap: 10px;
+  height: 100vh;
+  padding: 12px 16px;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, #121a24 0%, transparent 60%),
+    var(--bg);
+}
+
+/* ---------- HUD ---------- */
+
+.hud {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 0 18px;
+  background: linear-gradient(90deg, #121a24, #0e141c 55%, #101822);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.hud-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 210px;
+}
+
+.hud-logo {
+  font-family: var(--mono);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+
+.hud-sub {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+
+.hud-stats {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  flex: 1;
+}
+
+.hud-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hud-stat-label {
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+
+.hud-stat-value {
+  font-family: var(--mono);
+  font-size: 17px;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.hud-stat.gold .hud-stat-value {
+  color: var(--gold);
+}
+
+.hud-stat.danger .hud-stat-value {
+  color: var(--danger);
+}
+
+.hud-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ---------- 通用面板 ---------- */
+
+.main {
+  display: grid;
+  grid-template-columns: 226px minmax(0, 1fr) 306px;
+  gap: 10px;
+  min-height: 0;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+  padding: 10px 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.panel-head h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--text);
+}
+
+.muted {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.panel-empty {
+  margin: 4px 0;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.panel-foot {
+  margin: auto 0 0;
+  padding-top: 8px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--muted);
+  border-top: 1px solid var(--line-soft);
+}
+
+/* ---------- 按钮 ---------- */
+
+.btn {
+  padding: 7px 10px;
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: var(--text);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: var(--gold-soft);
+  color: var(--gold);
+}
+
+.btn:disabled {
+  color: #4d5a68;
+  border-color: var(--line-soft);
+  cursor: not-allowed;
+}
+
+.btn.primary {
+  min-width: 132px;
+  padding: 10px 16px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #131313;
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.btn.primary:hover:not(:disabled) {
+  color: #000;
+  background: #ffc94a;
+}
+
+.btn.primary:disabled {
+  color: #6b5e3a;
+  background: #2a2415;
+  border-color: #3a3018;
+}
+
+.btn.ghost {
+  color: var(--muted);
+  background: transparent;
+}
+
+/* ---------- 棋盘 ---------- */
+
+.board-area {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.board-host {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  background: #070a0f;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.board-host canvas {
+  display: block;
+}
+
+.board-caption {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------- 商店 ---------- */
+
+.shop-panel .shop-slots {
+  display: grid;
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+  flex: 1;
+  min-height: 0;
+}
+
+.shop-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+  padding: 6px 10px;
+  font-family: inherit;
+  text-align: left;
+  color: var(--text);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--line);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.shop-slot:hover:not(:disabled) {
+  border-color: var(--gold-soft);
+  border-left-color: var(--gold);
+}
+
+.shop-slot:disabled {
+  cursor: not-allowed;
+}
+
+.shop-slot.locked {
+  border-style: dashed;
+}
+
+.slot-name {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.slot-meta {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.slot-cost {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--gold);
+}
+
+.slot-empty {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #46525f;
+}
+
+.panel-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ---------- 整备区 ---------- */
+
+.bench-panel {
+  gap: 6px;
+}
+
+.bench-slots {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 6px;
+  flex: 1;
+  min-height: 0;
+}
+
+.bench-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 4px;
+  background: var(--panel-2);
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+}
+
+.bench-slot.filled {
+  border-color: var(--gold-soft);
+  background: #141a22;
+}
+
+/* ---------- 盟约 ---------- */
+
+.synergy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.synergy-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 8px;
+  background: var(--panel-2);
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+}
+
+/* ---------- 状态栏 ---------- */
+
+.status-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.3px;
+}
+
+/* ---------- 窄屏兜底 ---------- */
+
+@media (max-width: 1080px) {
+  .main {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(220px, 1fr) 200px auto;
+  }
+
+  .app {
+    grid-template-rows: 64px minmax(0, 1fr) 96px 28px;
+    padding: 8px;
+  }
+
+  .hud-stats {
+    gap: 14px;
+  }
+}
